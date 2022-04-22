@@ -1,0 +1,17 @@
+namespace: test
+helm:
+  chart: "./helm/mysql"
+targetCustomizations:
+- name: dev
+  clusterSelector:
+    matchLabels:
+      env: dev
+  kustomize:
+    dir: kustomize/mysql/overlays/dev
+
+- name: prod
+  clusterSelector:
+    matchLabels:
+      env: prod
+  kustomize:
+    dir: kustomize/mysql/overlays/prod
