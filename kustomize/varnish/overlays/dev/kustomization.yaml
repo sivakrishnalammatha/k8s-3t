@@ -1,0 +1,8 @@
+bases:
+  - ../../base
+configMapGenerator:
+- name: varnish-vcl
+  namespace: test-lc-kustomize
+  behavior: replace
+  files:
+  - default.vcl

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: varnish
+  namespace: test-lc-manifest
+  labels:
+    app: 3t
+    tier: varnish
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 3t
+      tier: varnish
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: 3t
+        tier: varnish
+    spec:
+      volumes:
+      - name: varnish-config
+        configMap:
+          name: varnish-vcl
+          items:
+            - key: default.vcl
+              path: default.vcl
+      containers:
+      - name: varnish
+        image: lkamz/varnish:2.0
+        imagePullPolicy: Always
+        #command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1024Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        env:
+        - name: VCL_CONFIG
+          value: /etc/varnish/default.vcl
+        volumeMounts:
+          - name: varnish-config
+            mountPath: /etc/varnish/
+        ports:
+        - containerPort: 80

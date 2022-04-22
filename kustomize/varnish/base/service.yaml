@@ -1,0 +1,32 @@
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: test-varnish-k8s
+#   labels:
+#     app: test-varnish-k8s
+#   namespace: test
+# spec:
+#   type: NodePort
+#   ports:
+#   - port: 8080
+#     nodePort: 30085
+#     protocol: TCP
+#   selector:
+#     app: test-varnish-k8s
+apiVersion: v1
+kind: Service
+metadata:
+  name: varnish
+  labels:
+    app: 3t
+    tier: varnish
+  namespace: test-lc-kustomize
+spec:
+  type: NodePort
+  ports:
+    - name: http 
+      port: 80
+  selector:
+    app: 3t
+    tier: varnish

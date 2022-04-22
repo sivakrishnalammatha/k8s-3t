@@ -1,0 +1,17 @@
+---
+releases:
+  - name: mysql
+    namespace: test-lc-helm
+    chart: mysql
+    labels:                                # Arbitrary key value pairs for filtering releases
+      stage: mysql
+  - name: django
+    namespace: test-lc-helm
+    chart: django
+    labels:                                # Arbitrary key value pairs for filtering releases
+      stage: django
+  - name: varnish
+    namespace: test-lc-helm
+    chart: varnish
+    labels:                                # Arbitrary key value pairs for filtering releases
+      stage: varnish
