@@ -1,17 +1,23 @@
 ---
+repositories:
+  - name: museum
+    url: http://test-chartmuseum.eks-portal.sportsbook.sgdigital.com
 releases:
   - name: mysql
     namespace: test-lc-helm
-    chart: mysql
-    labels:                                # Arbitrary key value pairs for filtering releases
+    chart: chartmuseum/mysql
+    #chart: mysql
+    labels:
       stage: mysql
   - name: django
     namespace: test-lc-helm
-    chart: django
-    labels:                                # Arbitrary key value pairs for filtering releases
+    chart: chartmuseum/django
+    #chart: django
+    labels:
       stage: django
   - name: varnish
     namespace: test-lc-helm
-    chart: varnish
-    labels:                                # Arbitrary key value pairs for filtering releases
+    chart: chartmuseum/varnish
+    #chart: varnish
+    labels:
       stage: varnish
