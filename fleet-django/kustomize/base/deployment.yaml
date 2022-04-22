@@ -1,0 +1,58 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django
+  labels:
+    app: 3t
+    tier: django
+  namespace: test-lc-kustomize
+spec:
+  selector:
+    matchLabels:
+      app: 3t
+      tier: django
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: 3t
+        tier: django
+    spec:
+      containers:
+      - image: lkamz/django-webapp:1.2
+        command: ['docker-entrypoint.sh']
+        name: django
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1024Mi
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        env:
+        - name: DJANGO_ALLOWED_HOSTS
+          value: "*"
+        - name: DATABASE_HOST
+          value: "mysql"
+        - name: DATABASE_NAME
+          value: "django"
+        - name: DATABASE_USERNAME
+          value: "django"
+        - name: DATABASE_ENGINE
+          value: "mysql"
+        - name: DATABASE_PORT
+          value: "3306"
+        - name: CONFIGURE_MYSQL_CONNECTION
+          value: "true"
+        - name: DJANGO_SECRET_KEY
+          value: "root"
+        - name: MYSQL_DB_PASSWORD
+          value: "root"
+        - name: DATABASE_DJANGO_PASSWORD
+          value: "root"
+        ports:
+        - containerPort: 8000
+          name: django

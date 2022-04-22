@@ -9,11 +9,3 @@ targetCustomizations:
   clusterGroup: dev
   kustomize:
     dir: kustomize/overlays/dev
-
-- name: prod
-  # clusterSelector:
-  #   matchLabels:
-  #     env: prod
-  clusterGroup: dev
-  kustomize:
-    dir: kustomize/overlays/prod
