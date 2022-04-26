@@ -37,10 +37,10 @@ spec:
             requests:
               cpu: 100m
               memory: 128Mi
-          volumeMounts:
-          - name: mysql
-            mountPath: /var/lib/mysql
-      volumes:
-      - name: mysql
-        persistentVolumeClaim:
-          claimName: mysql
+      #     volumeMounts:
+      #     - name: mysql
+      #       mountPath: /var/lib/mysql
+      # volumes:
+      # - name: mysql
+      #   persistentVolumeClaim:
+      #     claimName: mysql

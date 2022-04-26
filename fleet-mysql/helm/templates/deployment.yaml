@@ -44,13 +44,6 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          volumeMounts:
-          - name: {{ .Chart.Name }}
-            mountPath: /var/lib/mysql
-      volumes:
-      - name: {{ .Chart.Name }}
-        persistentVolumeClaim:
-          claimName: {{ .Chart.Name }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

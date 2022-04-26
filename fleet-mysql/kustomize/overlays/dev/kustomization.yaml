@@ -1,4 +1,4 @@
-bases:
-  - ../../base
+# bases:
+#   - ../../base
 patchesStrategicMerge:
   - replicacount.yaml

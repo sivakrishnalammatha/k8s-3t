@@ -2,6 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
-  namespace: test-lc-kustomize
+  namespace: test
 spec:
   replicas: 3

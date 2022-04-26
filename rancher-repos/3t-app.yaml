@@ -1,8 +1,8 @@
 kind: GitRepo
 apiVersion: fleet.cattle.io/v1alpha1
 metadata:
-  name: mysql
-  namespace: test
+  name: app3t
+  namespace: fleet-default
 spec:
   repo: https://github.com/camuzard/k8s-3t
   branch: master
@@ -10,8 +10,10 @@ spec:
   paths:
   - fleet-mysql
   - fleet-django
-  # targets:
+  targets:
   # - name: sportsbook
   #   clusterSelector:
   #     matchLabels:
   #       product: sportsbook
+  - name: dev
+    clusterGroup: dev

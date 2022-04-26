@@ -1,4 +1,6 @@
-bases:
-  - ../../base
+# bases:
+#   - ../../base
 patchesStrategicMerge:
   - replicacount.yaml
+transformers:
+  - labels.yaml

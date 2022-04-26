@@ -4,7 +4,7 @@
 
 replicaCount: 1
 
-namespace: test-lc-helm
+namespace: test
 
 image:
   repository: mysql
